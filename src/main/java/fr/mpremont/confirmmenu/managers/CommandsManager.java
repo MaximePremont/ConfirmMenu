@@ -2,14 +2,19 @@ package fr.mpremont.confirmmenu.managers;
 
 import java.util.ArrayList;
 
+import fr.mpremont.confirmmenu.MainClass;
+
 public class CommandsManager{
 	
 	private static ArrayList<String> commands = new ArrayList<String>();
 
 	public static void registerCommands() {
 		
-		//Special commands
-		commands.add("reload");
+		for(String s : MainClass.getInstance().getConfig().getString("Commands").replaceAll(" ", "").split(",")) {
+			
+			commands.add(s);
+			
+		}
 		
 	}
 	

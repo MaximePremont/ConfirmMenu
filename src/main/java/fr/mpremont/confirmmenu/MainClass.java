@@ -1,10 +1,13 @@
 package fr.mpremont.confirmmenu;
 
+import java.io.File;
+
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.mpremont.confirmmenu.managers.CommandsManager;
+import fr.mpremont.confirmmenu.managers.ConfigManager;
 import fr.mpremont.confirmmenu.managers.EventsManager;
 import fr.mpremont.confirmmenu.managers.VersionsManager;
 
@@ -18,8 +21,25 @@ public class MainClass extends JavaPlugin{
 		
 		if(VersionsManager.setupVersion()) {
 			
-			EventsManager.registerEvents();
-			CommandsManager.registerCommands();
+			File f = new File(getDataFolder(), "config.yml");
+			if(!f.exists()) {
+				
+				getConfig().options().copyDefaults(true);
+				saveDefaultConfig();
+				Bukkit.getConsoleSender().sendMessage("§b[§eConfirmMenu§b] §aConfiguration file created !");
+				
+			}
+			
+			if(ConfigManager.checkConfig()) {
+				
+				EventsManager.registerEvents();
+				CommandsManager.registerCommands();
+				
+			}else {
+				
+				Bukkit.getPluginManager().disablePlugin(this);
+				
+			}
 			
 		}else {
 			

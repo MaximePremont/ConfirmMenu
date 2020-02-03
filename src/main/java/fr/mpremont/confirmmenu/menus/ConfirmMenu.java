@@ -19,14 +19,14 @@ public class ConfirmMenu {
 		
 		ItemStack ISc = new ItemStack(Material.SLIME_BLOCK);
 		ItemMeta IMc = ISc.getItemMeta();
-		IMc.setDisplayName("§a§lCONFIRMER");
+		IMc.setDisplayName("§a§lCONFIR");
 		ISc.setItemMeta(IMc);
 		i.setItem(2, ISc);
 		IMc.getDisplayName();
 		
 		ItemStack ISa = new ItemStack(Material.REDSTONE_BLOCK);
 		ItemMeta IMa = ISa.getItemMeta();
-		IMa.setDisplayName("§c§lANNULER");
+		IMa.setDisplayName("§c§lCANCEL");
 		ISa.setItemMeta(IMa);
 		i.setItem(6, ISa);
 		
