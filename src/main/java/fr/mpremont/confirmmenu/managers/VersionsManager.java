@@ -6,6 +6,7 @@ import fr.mpremont.confirmmenu.interfaces.Version;
 import fr.mpremont.confirmmenu.interfaces.versions.V1_8_R1;
 import fr.mpremont.confirmmenu.interfaces.versions.V1_8_R2;
 import fr.mpremont.confirmmenu.interfaces.versions.V1_8_R3;
+import fr.mpremont.confirmmenu.interfaces.versions.V1_9_R1;
 
 public class VersionsManager {
 	
@@ -23,9 +24,13 @@ public class VersionsManager {
 		}catch (ArrayIndexOutOfBoundsException e) {
 			
 			e.printStackTrace();
+			result = false;
 			
 		}
-		if(version.equals("v1_8_R3")) {
+		
+		if(version.equals("v1_9_R1")) {
+			vclass = new V1_9_R1();
+		}else if(version.equals("v1_8_R3")) {
 			vclass = new V1_8_R3();
 		}else if(version.equals("v1_8_R2")) {
 			vclass = new V1_8_R2();
