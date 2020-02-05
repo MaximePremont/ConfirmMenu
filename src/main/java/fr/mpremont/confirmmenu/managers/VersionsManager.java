@@ -5,6 +5,7 @@ import org.bukkit.Bukkit;
 import fr.mpremont.confirmmenu.interfaces.Version;
 import fr.mpremont.confirmmenu.interfaces.versions.V1_8_R1;
 import fr.mpremont.confirmmenu.interfaces.versions.V1_8_R2;
+import fr.mpremont.confirmmenu.interfaces.versions.V1_8_R3;
 
 public class VersionsManager {
 	
@@ -24,8 +25,9 @@ public class VersionsManager {
 			e.printStackTrace();
 			
 		}
-		
-		if(version.equals("v1_8_R2")) {
+		if(version.equals("v1_8_R3")) {
+			vclass = new V1_8_R3();
+		}else if(version.equals("v1_8_R2")) {
 			vclass = new V1_8_R2();
 		}else if(version.equals("v1_8_R1")){
 			vclass = new V1_8_R1();

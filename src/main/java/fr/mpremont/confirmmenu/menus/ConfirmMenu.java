@@ -12,7 +12,6 @@ public class ConfirmMenu {
 	
 	public static void openMenu(Player p) {
 		
-		p.closeInventory();
 		p.playSound(p.getLocation(), Sound.CHICKEN_EGG_POP, 10, 1);
 		
 		Inventory i = Bukkit.createInventory(null, 9, "§8§lCONFIRM");

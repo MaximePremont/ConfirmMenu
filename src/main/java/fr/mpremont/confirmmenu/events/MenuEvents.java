@@ -43,10 +43,6 @@ public class MenuEvents implements Listener {
 					
 				}
 				
-			}else {
-				
-				Bukkit.broadcastMessage("§cMenuEvents :: Isn't confirming");
-				
 			}
 			
 		}

@@ -1,6 +1,7 @@
 package fr.mpremont.confirmmenu;
 
 import java.util.HashMap;
+import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -10,16 +11,13 @@ import fr.mpremont.confirmmenu.menus.ConfirmMenu;
 
 public class ConfirmMenuAPI {
 	
-	private static HashMap<Player, String> list = new HashMap<Player, String>();
+	private static HashMap<UUID, String> list = new HashMap<UUID, String>();
 	
 	public static void confirm(Player player, String action) {
 		
-		Bukkit.broadcastMessage("§e>> "+player.getName()+" :: "+action);
-		
 		if(!isConfirming(player)) {
 			
-			Bukkit.broadcastMessage("§5Added");
-			list.put(player, action);
+			list.put(player.getUniqueId(), action);
 			ConfirmMenu.openMenu(player);
 			
 		}
@@ -31,7 +29,7 @@ public class ConfirmMenuAPI {
 		if(isConfirming(player)) {
 			
 			CancelEvent event = new CancelEvent(player, getConfirmAction(player));
-			list.remove(player);
+			list.remove(player.getUniqueId());
 			Bukkit.getPluginManager().callEvent(event);
 			if(player.getOpenInventory() != null) {
 				player.closeInventory();
@@ -43,15 +41,7 @@ public class ConfirmMenuAPI {
 	
 	public static boolean isConfirming(Player player) {
 		
-		boolean result = false;
-		if(list.containsKey(player)) {
-			
-			result = true;
-			Bukkit.broadcastMessage("§dContains "+player.getName());
-			
-		}
-		
-		return result;
+		return list.containsKey(player.getUniqueId());
 		
 	}
 	
@@ -59,9 +49,9 @@ public class ConfirmMenuAPI {
 		
 		String result = null;
 		
-		if(isConfirming(player) == true) {
+		if(isConfirming(player)) {
 			
-			result = list.get(player);
+			result = list.get(player.getUniqueId());
 			
 		}
 		
@@ -73,7 +63,7 @@ public class ConfirmMenuAPI {
 		
 		if(isConfirming(p)) {
 			
-			list.remove(p);
+			list.remove(p.getUniqueId());
 			
 		}
 		

@@ -16,7 +16,11 @@ public class CloseEvents implements Listener {
 		
 		if(ConfirmMenuAPI.isConfirming(p)) {
 			
-			ConfirmMenuAPI.cancel(p);
+			if(e.getInventory() != null) {
+				
+				ConfirmMenuAPI.cancel(p);
+				
+			}
 			
 		}
 		
