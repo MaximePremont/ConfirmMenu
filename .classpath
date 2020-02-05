@@ -36,13 +36,10 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="D:/API/spigot-1.8-R0.1-SNAPSHOT-latest.jar"/>
 	<classpathentry kind="lib" path="D:/API/spigot-1.8.3-R0.1-SNAPSHOT-latest.jar"/>
-	<classpathentry kind="lib" path="D:/API/spigot-1.8.4-R0.1-SNAPSHOT-latest.jar"/>
-	<classpathentry kind="lib" path="D:/API/spigot-1.8.5-R0.1-SNAPSHOT-latest.jar"/>
-	<classpathentry kind="lib" path="D:/API/spigot-1.8.6-R0.1-SNAPSHOT-latest.jar"/>
-	<classpathentry kind="lib" path="D:/API/spigot-1.8.7-R0.1-SNAPSHOT-latest.jar"/>
+	<classpathentry kind="lib" path="D:/API/spigot-1.9.4-R0.1-SNAPSHOT-latest.jar"/>
+	<classpathentry kind="lib" path="D:/API/spigot-1.10.2-R0.1-SNAPSHOT-latest.jar"/>
 	<classpathentry kind="lib" path="D:/API/spigot-1.8.8-R0.1-SNAPSHOT-latest.jar"/>
 	<classpathentry kind="lib" path="D:/API/spigot-1.9-R0.1-SNAPSHOT-latest.jar"/>
-	<classpathentry kind="lib" path="D:/API/spigot-1.9.2-R0.1-SNAPSHOT-latest.jar"/>
-	<classpathentry kind="lib" path="D:/API/spigot-1.9.4-R0.1-SNAPSHOT-latest.jar"/>
+	<classpathentry kind="lib" path="D:/API/spigot-1.11.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
