@@ -14,8 +14,11 @@ public class ConfirmMenuAPI {
 	
 	public static void confirm(Player player, String action) {
 		
+		Bukkit.broadcastMessage("§e>> "+player.getName()+" :: "+action);
+		
 		if(!isConfirming(player)) {
 			
+			Bukkit.broadcastMessage("§5Added");
 			list.put(player, action);
 			ConfirmMenu.openMenu(player);
 			
@@ -41,10 +44,10 @@ public class ConfirmMenuAPI {
 	public static boolean isConfirming(Player player) {
 		
 		boolean result = false;
-		
 		if(list.containsKey(player)) {
 			
 			result = true;
+			Bukkit.broadcastMessage("§dContains "+player.getName());
 			
 		}
 		
@@ -56,7 +59,7 @@ public class ConfirmMenuAPI {
 		
 		String result = null;
 		
-		if(isConfirming(player)) {
+		if(isConfirming(player) == true) {
 			
 			result = list.get(player);
 			

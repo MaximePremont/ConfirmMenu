@@ -16,7 +16,7 @@ public class ConfigManager {
 		if(!c.getString("ConfigVersion").equalsIgnoreCase("1.0.0")) {
 			
 			Bukkit.getConsoleSender().sendMessage("§b[§eConfirmMenu§b] §cInvalid configuration file !");
-			result = true;
+			result = false;
 			//Update ?
 			
 		}

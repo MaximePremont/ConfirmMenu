@@ -21,7 +21,6 @@ public class CommandsManager{
 	public static boolean isRegistered(String cmd) {
 		
 		boolean result = false;
-		
 		if(commands.contains(cmd)) {
 			
 			result = true;

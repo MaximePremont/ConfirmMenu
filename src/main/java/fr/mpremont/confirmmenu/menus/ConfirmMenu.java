@@ -19,7 +19,7 @@ public class ConfirmMenu {
 		
 		ItemStack ISc = new ItemStack(Material.SLIME_BLOCK);
 		ItemMeta IMc = ISc.getItemMeta();
-		IMc.setDisplayName("§a§lCONFIR");
+		IMc.setDisplayName("§a§lCONFIRM");
 		ISc.setItemMeta(IMc);
 		i.setItem(2, ISc);
 		IMc.getDisplayName();

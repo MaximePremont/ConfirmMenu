@@ -22,7 +22,6 @@ public class MenuEvents implements Listener {
 		}else {
 			
 			Player p = (Player) e.getWhoClicked();
-			
 			if(ConfirmMenuAPI.isConfirming(p)) {
 				
 				e.setCancelled(true);
@@ -43,6 +42,10 @@ public class MenuEvents implements Listener {
 					ConfirmMenuAPI.cancel(p);
 					
 				}
+				
+			}else {
+				
+				Bukkit.broadcastMessage("§cMenuEvents :: Isn't confirming");
 				
 			}
 			
