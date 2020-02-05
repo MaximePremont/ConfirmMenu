@@ -7,6 +7,7 @@ import fr.mpremont.confirmmenu.interfaces.versions.V1_8_R1;
 import fr.mpremont.confirmmenu.interfaces.versions.V1_8_R2;
 import fr.mpremont.confirmmenu.interfaces.versions.V1_8_R3;
 import fr.mpremont.confirmmenu.interfaces.versions.V1_9_R1;
+import fr.mpremont.confirmmenu.interfaces.versions.V1_9_R2;
 
 public class VersionsManager {
 	
@@ -28,7 +29,9 @@ public class VersionsManager {
 			
 		}
 		
-		if(version.equals("v1_9_R1")) {
+		if(version.equals("v1_9_R2")) {
+			vclass = new V1_9_R2();
+		}else if(version.equals("v1_9_R1")) {
 			vclass = new V1_9_R1();
 		}else if(version.equals("v1_8_R3")) {
 			vclass = new V1_8_R3();
