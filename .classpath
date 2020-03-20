@@ -45,5 +45,6 @@
 	<classpathentry kind="lib" path="D:/API/spigot-1.13.jar"/>
 	<classpathentry kind="lib" path="D:/API/spigot-1.13.2.jar"/>
 	<classpathentry kind="lib" path="D:/API/spigot-1.14.4.jar"/>
+	<classpathentry kind="lib" path="D:/API/spigot-1.15.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
