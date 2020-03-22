@@ -17,7 +17,9 @@ public class ConfirmMenu {
 		if(MainClass.getInstance().getConfig().getBoolean("OpenSound")) {
 			p.playSound(p.getLocation(), VersionsManager.use().getSound("CHICKEN_EGG_POP"), 10, 1);
 		}
-		p.sendMessage(MainClass.getInstance().getConfig().getString("ConfirmMessage").replaceAll("&", "§"));
+		if(MainClass.getInstance().getConfig().getString("ConfirmMessage") != null || MainClass.getInstance().getConfig().getString("ConfirmMessage") != "") {
+			p.sendMessage(MainClass.getInstance().getConfig().getString("ConfirmMessage").replaceAll("&", "§"));
+		}
 		
 		Inventory i = Bukkit.createInventory(null, 9, "§8§lCONFIRM");
 		
