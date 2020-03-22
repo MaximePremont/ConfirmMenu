@@ -1,7 +1,11 @@
-# ========== ConfirmMenu by MaximePremont ==========
+# ========== Confirm Menu by MaximePremont ==========
 
 # List of orders that require confirmation
-Commands: stop, reload
+Commands: "stop, reload"
+
+# Messages and sounds
+ConfirmMessage: "&eAre you sure ?"
+OpenSound: true
 
 # [Do not touch ] Configuration version
-ConfigVersion: 1.0.0
+ConfigVersion: 1.0.1#en
