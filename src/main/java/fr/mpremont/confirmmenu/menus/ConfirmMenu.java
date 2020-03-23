@@ -17,22 +17,22 @@ public class ConfirmMenu {
 		if(MainClass.getInstance().getConfig().getBoolean("OpenSound")) {
 			p.playSound(p.getLocation(), VersionsManager.use().getSound("CHICKEN_EGG_POP"), 10, 1);
 		}
-		if(MainClass.getInstance().getConfig().getString("ConfirmMessage") != null || MainClass.getInstance().getConfig().getString("ConfirmMessage") != "") {
-			p.sendMessage(MainClass.getInstance().getConfig().getString("ConfirmMessage").replaceAll("&", "§"));
+		if(MainClass.getInstance().getConfig().getString("Text.ConfirmMessage") != null || MainClass.getInstance().getConfig().getString("Text.ConfirmMessage") != "") {
+			p.sendMessage(MainClass.getInstance().getConfig().getString("Text.ConfirmMessage").replaceAll("&", "§"));
 		}
 		
 		Inventory i = Bukkit.createInventory(null, 9, "§8§lCONFIRM");
 		
 		ItemStack ISc = new ItemStack(Material.SLIME_BLOCK);
 		ItemMeta IMc = ISc.getItemMeta();
-		IMc.setDisplayName("§a§lCONFIRM");
+		IMc.setDisplayName(MainClass.getInstance().getConfig().getString("Text.MenuConfirm").replaceAll("&", "§"));
 		ISc.setItemMeta(IMc);
 		i.setItem(2, ISc);
 		IMc.getDisplayName();
 		
 		ItemStack ISa = new ItemStack(Material.REDSTONE_BLOCK);
 		ItemMeta IMa = ISa.getItemMeta();
-		IMa.setDisplayName("§c§lCANCEL");
+		IMa.setDisplayName(MainClass.getInstance().getConfig().getString("Text.MenuCancel").replaceAll("&", "§"));
 		ISa.setItemMeta(IMa);
 		i.setItem(6, ISa);
 		

@@ -35,6 +35,10 @@ public class MainClass extends JavaPlugin{
 				EventsManager.registerEvents();
 				CommandsManager.registerCommands();
 				
+				int pluginId = 6853;
+				@SuppressWarnings("unused")
+				Metrics metrics = new Metrics(this, pluginId);
+				
 			}else {
 				
 				Bukkit.getPluginManager().disablePlugin(this);

@@ -3,9 +3,15 @@
 # List of orders that require confirmation
 Commands: "stop, reload"
 
-# Messages and sounds
-ConfirmMessage: "&eAre you sure ?"
+# Enable open sound
 OpenSound: true
 
+# Messages ( color codes are valid )
+Text:
+    ConfirmMessage: "&eAre you sure ?"
+    MenuTitle: "&8&lCONFIRM"
+    MenuConfirm: "&a&lCONFIRM"
+    MenuCancel: "&c&lCANCEL"
+
 # [Do not touch ] Configuration version
-ConfigVersion: 1.0.1#en
+ConfigVersion: 1.0.2#en
