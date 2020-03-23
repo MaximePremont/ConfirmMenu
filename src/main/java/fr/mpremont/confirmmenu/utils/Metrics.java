@@ -1,4 +1,4 @@
-package fr.mpremont.confirmmenu;
+package fr.mpremont.confirmmenu.utils;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;

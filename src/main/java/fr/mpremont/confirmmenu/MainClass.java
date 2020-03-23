@@ -10,6 +10,8 @@ import fr.mpremont.confirmmenu.managers.CommandsManager;
 import fr.mpremont.confirmmenu.managers.ConfigManager;
 import fr.mpremont.confirmmenu.managers.EventsManager;
 import fr.mpremont.confirmmenu.managers.VersionsManager;
+import fr.mpremont.confirmmenu.utils.Metrics;
+import fr.mpremont.confirmmenu.utils.UpdateChecker;
 
 public class MainClass extends JavaPlugin{
 	
@@ -38,6 +40,21 @@ public class MainClass extends JavaPlugin{
 				int pluginId = 6853;
 				@SuppressWarnings("unused")
 				Metrics metrics = new Metrics(this, pluginId);
+				
+				if(this.getConfig().getBoolean("UpdateCheck")) {
+					
+					try {
+						
+						UpdateChecker updater = new UpdateChecker(this, 76279);
+						if(updater.checkForUpdates()) {
+							Bukkit.getConsoleSender().sendMessage("§b[§eConfirmMenu§b] §eA new version of the plugin is available !");
+						}
+						
+					}catch (Exception e) {
+						Bukkit.getConsoleSender().sendMessage("§b[§eConfirmMenu§b] §cCould not check for updates !");
+					}
+					
+				}
 				
 			}else {
 				
