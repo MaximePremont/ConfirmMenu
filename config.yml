@@ -12,10 +12,10 @@ Text:
     MenuConfirm: "&a&lCONFIRM"
     MenuCancel: "&c&lCANCEL"
 # Changing the language will automatically change the configuration on the next reboot
-# Available languages : EN | FR | OTHER
+# Available languages : EN | FR | ES | OTHER
 Language : "EN"
 # Check for updates and send a message to the console
 UpdateCheck: true
 
 # [Do not touch ] Configuration version
-ConfigVersion: 1.0.3#en
+ConfigVersion: 1.0.4#en

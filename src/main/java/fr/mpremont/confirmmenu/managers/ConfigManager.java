@@ -14,31 +14,42 @@ public class ConfigManager {
 		
 		boolean result = true;
 		
-		Configuration c = MainClass.getInstance().getConfig();
-		String version = c.getString("ConfigVersion").split("#")[0];
-		
-		if(version == null) {
+		String confv = MainClass.getInstance().getConfig().getString("ConfigVersion");
+		if(confv == null || confv == "" || (!confv.contains("#"))) {
 			
 			Bukkit.getConsoleSender().sendMessage("§b[§eConfirmMenu§b] §cInvalid configuration file !");
 			result = false;
 			
-		}else if(!version.equalsIgnoreCase("1.0.3")) {
+		}else {
 			
-			setBasic(c);
+			Configuration c = MainClass.getInstance().getConfig();
+			String version = c.getString("ConfigVersion").split("#")[0];
 			
-		}
-		
-		String lang = c.getString("ConfigVersion").split("#")[1];
-		String current = c.getString("Language");
-		
-		if(!lang.equalsIgnoreCase(current)) {
+			if(!version.equalsIgnoreCase("1.0.4")) {
+				
+				setBasic(c);
+				MainClass.getInstance().reloadConfig();
+				c = MainClass.getInstance().getConfig();
+				
+			}
 			
-			if(current.equalsIgnoreCase("FR")) {
-				setFR(c);
-			}else if(current.equalsIgnoreCase("OTHER")) {
-				setOTHER(c);
-			}else {
-				setEN(c);
+			String lang = c.getString("ConfigVersion").split("#")[1];
+			String current = c.getString("Language");
+			
+			if(!lang.equalsIgnoreCase(current)) {
+				
+				if(current.equalsIgnoreCase("FR")) {
+					setFR(c);
+				}else if(current.equalsIgnoreCase("ES")) {
+					setES(c);
+				}else if(current.equalsIgnoreCase("OTHER")) {
+					setOTHER(c);
+				}else {
+					setEN(c);
+				}
+				
+				MainClass.getInstance().reloadConfig();
+				
 			}
 			
 		}
@@ -95,20 +106,69 @@ public class ConfigManager {
 					+ "    MenuConfirm: \""+menuConfirm+"\"\n"
 					+ "    MenuCancel: \""+menuCancel+"\"\n"
 					+ "# Changing the language will automatically change the configuration on the next reboot\n"
-					+ "# Available languages : EN | FR | OTHER\n"
+					+ "# Available languages : EN | FR | ES | OTHER\n"
 					+ "Language : \"OTHER\"\n"
 					+ "# Check for updates and send a message to the console\n"
 					+ "UpdateCheck: "+updateCheck+"\n"
 					+ "\n"
 					+ "# [Do not touch] Configuration version\n"
-					+ "ConfigVersion: 1.0.3#other");
+					+ "ConfigVersion: 1.0.4#other");
 			writer.close();
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 		
-		MainClass.getInstance().reloadConfig();
+	}
+	
+	private static void setES(Configuration c) {
+		
+		String commands = c.getString("Commands");
+		if(commands == null || commands == "") {
+			commands = "stop, reload";
+		}
+		String openSound = c.getString("OpenSound");
+		if(openSound == null || openSound == "") {
+			openSound = "true";
+		}
+		String confirmMessage = "&eEstas seguro ?";
+		String menuTitle = "&8&lCONFIRMAR";
+		String menuConfirm = "&a&lCONFIRMAR";
+		String menuCancel = "&c&lCANCELAR";
+		String updateCheck = c.getString("UpdateCheck");
+		if(updateCheck == null || updateCheck == "") {
+			updateCheck = "true";
+		}
+		
+		try {
+			
+			PrintWriter writer = new PrintWriter("./plugins/ConfirmMenu/config.yml");
+			writer.println("# ========== Confirm Menu de MaximePremont ==========\n"
+					+ "\n"
+					+ "# Lista de comandos que necesitan confirmación\n"
+					+ "Commands: \""+commands+"\"\n"
+					+ "\n"
+					+ "# Activa el sonido de apertura del menú\n"
+					+ "OpenSound: "+openSound+"\n"
+					+ "# Mensajes ( los códigos de colores funcionan )\n"
+					+ "Text:\n"
+					+ "    ConfirmMessage: \""+confirmMessage+"\"\n"
+					+ "    MenuTitle: \""+menuTitle+"\"\n"
+					+ "    MenuConfirm: \""+menuConfirm+"\"\n"
+					+ "    MenuCancel: \""+menuCancel+"\"\n"
+					+ "# Cambiar el idioma cambiará automáticamente la configuración en el próximo reinicio\n"
+					+ "# Idiomas disponibles : EN | FR | ES | OTHER\n"
+					+ "Language : \"ES\"\n"
+					+ "# Comprube si hay un actualización e indíquela en la consola\n"
+					+ "UpdateCheck: "+updateCheck+"\n"
+					+ "\n"
+					+ "# [No modificar] Versión de configuración\n"
+					+ "ConfigVersion: 1.0.4#es");
+			writer.close();
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -148,20 +208,18 @@ public class ConfigManager {
 					+ "    MenuConfirm: \""+menuConfirm+"\"\n"
 					+ "    MenuCancel: \""+menuCancel+"\"\n"
 					+ "# Changer la langue modifiera automatiquement la configuration au prochain redémarrage\n"
-					+ "# Available languages : EN | FR | OTHER\n"
+					+ "# Langages disponibles : EN | FR | ES | OTHER\n"
 					+ "Language : \"FR\"\n"
 					+ "# Vérifier si il y à une mise à jour et l'indiquer dans la console\n"
 					+ "UpdateCheck: "+updateCheck+"\n"
 					+ "\n"
 					+ "# [Ne pas modifier] Version de la configuration\n"
-					+ "ConfigVersion: 1.0.3#fr");
+					+ "ConfigVersion: 1.0.4#fr");
 			writer.close();
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		
-		MainClass.getInstance().reloadConfig();
 		
 	}
 	
@@ -201,20 +259,18 @@ public class ConfigManager {
 					+ "    MenuConfirm: \""+menuConfirm+"\"\n"
 					+ "    MenuCancel: \""+menuCancel+"\"\n"
 					+ "# Changing the language will automatically change the configuration on the next reboot\n"
-					+ "# Available languages : EN | FR | OTHER\n"
+					+ "# Available languages : EN | FR | ES | OTHER\n"
 					+ "Language : \"EN\"\n"
 					+ "# Check for updates and send a message to the console\n"
 					+ "UpdateCheck: "+updateCheck+"\n"
 					+ "\n"
 					+ "# [Do not touch] Configuration version\n"
-					+ "ConfigVersion: 1.0.3#en");
+					+ "ConfigVersion: 1.0.4#en");
 			writer.close();
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		
-		MainClass.getInstance().reloadConfig();
 		
 	}
 	
@@ -244,6 +300,10 @@ public class ConfigManager {
 		if(menuCancel == null || menuCancel == "") {
 			menuCancel = "&c&lCANCEL";
 		}
+		String language = c.getString("Language");
+		if(language == null || language == "") {
+			language = "EN";
+		}
 		String updateCheck = c.getString("UpdateCheck");
 		if(updateCheck == null || updateCheck == "") {
 			updateCheck = "true";
@@ -266,20 +326,18 @@ public class ConfigManager {
 					+ "    MenuConfirm: \""+menuConfirm+"\"\n"
 					+ "    MenuCancel: \""+menuCancel+"\"\n"
 					+ "# Changing the language will automatically change the configuration on the next reboot\n"
-					+ "# Available languages : EN | FR | OTHER\n"
-					+ "Language : \"EN\"\n"
+					+ "# Available languages : EN | FR | ES | OTHER\n"
+					+ "Language : \""+language+"\"\n"
 					+ "# Check for updates and send a message to the console\n"
 					+ "UpdateCheck: "+updateCheck+"\n"
 					+ "\n"
 					+ "# [Do not touch] Configuration version\n"
-					+ "ConfigVersion: 1.0.3#en");
+					+ "ConfigVersion: 1.0.4#CREATION");
 			writer.close();
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		
-		MainClass.getInstance().reloadConfig();
 		
 	}
 
