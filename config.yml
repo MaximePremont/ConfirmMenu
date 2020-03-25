@@ -1,6 +1,6 @@
 # ========== Confirm Menu by MaximePremont ==========
 
-# List of orders that require confirmation
+# List of commands that require confirmation
 Commands: "stop, reload"
 
 # Enable open sound
