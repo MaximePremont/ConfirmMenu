@@ -11,6 +11,8 @@ Text:
     MenuTitle: "&8&lCONFIRM"
     MenuConfirm: "&a&lCONFIRM"
     MenuCancel: "&c&lCANCEL"
+    NewVersion: "&eA new version of the plugin is available !"
+    UpdateFail: "&cCould not check for updates !"
 # Changing the language will automatically change the configuration on the next reboot
 # Available languages : EN | FR | ES | OTHER
 Language : "EN"
@@ -18,4 +20,4 @@ Language : "EN"
 UpdateCheck: true
 
 # [Do not touch ] Configuration version
-ConfigVersion: 1.0.4#en
+ConfigVersion: 1.0.5#en

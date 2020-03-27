@@ -47,11 +47,11 @@ public class MainClass extends JavaPlugin{
 						
 						UpdateChecker updater = new UpdateChecker(this, 76279);
 						if(updater.checkForUpdates()) {
-							Bukkit.getConsoleSender().sendMessage("§b[§eConfirmMenu§b] §eA new version of the plugin is available !");
+							Bukkit.getConsoleSender().sendMessage("§b[§eConfirmMenu§b] §r"+getConfig().getString("Text.NewVersion").replaceAll("&", "§"));
 						}
 						
 					}catch (Exception e) {
-						Bukkit.getConsoleSender().sendMessage("§b[§eConfirmMenu§b] §cCould not check for updates !");
+						Bukkit.getConsoleSender().sendMessage("§b[§eConfirmMenu§b] §r"+getConfig().getString("Text.UpdateFail").replaceAll("&", "§"));
 					}
 					
 				}
