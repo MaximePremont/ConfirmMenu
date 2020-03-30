@@ -25,7 +25,7 @@ public class ConfigManager {
 			Configuration c = MainClass.getInstance().getConfig();
 			String version = c.getString("ConfigVersion").split("#")[0];
 			
-			if(!version.equalsIgnoreCase("1.0.4")) {
+			if(!version.equalsIgnoreCase("1.0.5")) {
 				
 				setBasic(c);
 				MainClass.getInstance().reloadConfig();
@@ -84,6 +84,14 @@ public class ConfigManager {
 		if(menuCancel == null || menuCancel == "") {
 			menuCancel = "&c&lCANCEL";
 		}
+		String newVersion = c.getString("Text.NewVersion");
+		if(newVersion == null || newVersion == "") {
+			newVersion = "&eA new version of the plugin is available !";
+		}
+		String updateFail = c.getString("Text.UpdateFail");
+		if(updateFail == null || updateFail == "") {
+			updateFail = "&cCould not check for updates !";
+		}
 		String updateCheck = c.getString("UpdateCheck");
 		if(updateCheck == null || updateCheck == "") {
 			updateCheck = "true";
@@ -105,6 +113,8 @@ public class ConfigManager {
 					+ "    MenuTitle: \""+menuTitle+"\"\n"
 					+ "    MenuConfirm: \""+menuConfirm+"\"\n"
 					+ "    MenuCancel: \""+menuCancel+"\"\n"
+					+ "    NewVersion: \""+newVersion+"\"\n"
+					+ "    UpdateFail: \""+updateFail+"\"\n"
 					+ "# Changing the language will automatically change the configuration on the next reboot\n"
 					+ "# Available languages : EN | FR | ES | OTHER\n"
 					+ "Language : \"OTHER\"\n"
@@ -112,7 +122,7 @@ public class ConfigManager {
 					+ "UpdateCheck: "+updateCheck+"\n"
 					+ "\n"
 					+ "# [Do not touch] Configuration version\n"
-					+ "ConfigVersion: 1.0.4#other");
+					+ "ConfigVersion: 1.0.5#other");
 			writer.close();
 			
 		} catch (FileNotFoundException e) {
@@ -135,6 +145,8 @@ public class ConfigManager {
 		String menuTitle = "&8&lCONFIRMAR";
 		String menuConfirm = "&a&lCONFIRMAR";
 		String menuCancel = "&c&lCANCELAR";
+		String newVersion = "&e¡Una nueva versión del plugin está disponible!";
+		String updateFail = "&c¡No se pueden buscar actualizaciones!";
 		String updateCheck = c.getString("UpdateCheck");
 		if(updateCheck == null || updateCheck == "") {
 			updateCheck = "true";
@@ -156,6 +168,8 @@ public class ConfigManager {
 					+ "    MenuTitle: \""+menuTitle+"\"\n"
 					+ "    MenuConfirm: \""+menuConfirm+"\"\n"
 					+ "    MenuCancel: \""+menuCancel+"\"\n"
+					+ "    NewVersion: \""+newVersion+"\"\n"
+					+ "    UpdateFail: \""+updateFail+"\"\n"
 					+ "# Cambiar el idioma cambiará automáticamente la configuración en el próximo reinicio\n"
 					+ "# Idiomas disponibles : EN | FR | ES | OTHER\n"
 					+ "Language : \"ES\"\n"
@@ -163,7 +177,7 @@ public class ConfigManager {
 					+ "UpdateCheck: "+updateCheck+"\n"
 					+ "\n"
 					+ "# [No modificar] Versión de configuración\n"
-					+ "ConfigVersion: 1.0.4#es");
+					+ "ConfigVersion: 1.0.5#es");
 			writer.close();
 			
 		} catch (FileNotFoundException e) {
@@ -186,6 +200,8 @@ public class ConfigManager {
 		String menuTitle = "&8&lCONFIRMATION";
 		String menuConfirm = "&a&lCONFIRMER";
 		String menuCancel = "&c&lANNULER";
+		String newVersion = "&eUne nouvelle version du plugin est disponible !";
+		String updateFail = "&cImpossible de vérifier les mises à jour !";
 		String updateCheck = c.getString("UpdateCheck");
 		if(updateCheck == null || updateCheck == "") {
 			updateCheck = "true";
@@ -207,6 +223,8 @@ public class ConfigManager {
 					+ "    MenuTitle: \""+menuTitle+"\"\n"
 					+ "    MenuConfirm: \""+menuConfirm+"\"\n"
 					+ "    MenuCancel: \""+menuCancel+"\"\n"
+					+ "    NewVersion: \""+newVersion+"\"\n"
+					+ "    UpdateFail: \""+updateFail+"\"\n"
 					+ "# Changer la langue modifiera automatiquement la configuration au prochain redémarrage\n"
 					+ "# Langages disponibles : EN | FR | ES | OTHER\n"
 					+ "Language : \"FR\"\n"
@@ -214,7 +232,7 @@ public class ConfigManager {
 					+ "UpdateCheck: "+updateCheck+"\n"
 					+ "\n"
 					+ "# [Ne pas modifier] Version de la configuration\n"
-					+ "ConfigVersion: 1.0.4#fr");
+					+ "ConfigVersion: 1.0.5#fr");
 			writer.close();
 			
 		} catch (FileNotFoundException e) {
@@ -237,6 +255,8 @@ public class ConfigManager {
 		String menuTitle = "&8&lCONFIRM";
 		String menuConfirm = "&a&lCONFIRM";
 		String menuCancel = "&c&lCANCEL";
+		String newVersion = "&eA new version of the plugin is available !";
+		String updateFail = "&cCould not check for updates !";
 		String updateCheck = c.getString("UpdateCheck");
 		if(updateCheck == null || updateCheck == "") {
 			updateCheck = "true";
@@ -258,6 +278,8 @@ public class ConfigManager {
 					+ "    MenuTitle: \""+menuTitle+"\"\n"
 					+ "    MenuConfirm: \""+menuConfirm+"\"\n"
 					+ "    MenuCancel: \""+menuCancel+"\"\n"
+					+ "    NewVersion: \""+newVersion+"\"\n"
+					+ "    UpdateFail: \""+updateFail+"\"\n"
 					+ "# Changing the language will automatically change the configuration on the next reboot\n"
 					+ "# Available languages : EN | FR | ES | OTHER\n"
 					+ "Language : \"EN\"\n"
@@ -265,7 +287,7 @@ public class ConfigManager {
 					+ "UpdateCheck: "+updateCheck+"\n"
 					+ "\n"
 					+ "# [Do not touch] Configuration version\n"
-					+ "ConfigVersion: 1.0.4#en");
+					+ "ConfigVersion: 1.0.5#en");
 			writer.close();
 			
 		} catch (FileNotFoundException e) {
@@ -300,6 +322,14 @@ public class ConfigManager {
 		if(menuCancel == null || menuCancel == "") {
 			menuCancel = "&c&lCANCEL";
 		}
+		String newVersion = c.getString("Text.NewVersion");
+		if(newVersion == null || newVersion == "") {
+			newVersion = "&eA new version of the plugin is available !";
+		}
+		String updateFail = c.getString("Text.UpdateFail");
+		if(updateFail == null || updateFail == "") {
+			updateFail = "&cCould not check for updates !";
+		}
 		String language = c.getString("Language");
 		if(language == null || language == "") {
 			language = "EN";
@@ -325,6 +355,8 @@ public class ConfigManager {
 					+ "    MenuTitle: \""+menuTitle+"\"\n"
 					+ "    MenuConfirm: \""+menuConfirm+"\"\n"
 					+ "    MenuCancel: \""+menuCancel+"\"\n"
+					+ "    NewVersion: \""+newVersion+"\"\n"
+					+ "    UpdateFail: \""+updateFail+"\"\n"
 					+ "# Changing the language will automatically change the configuration on the next reboot\n"
 					+ "# Available languages : EN | FR | ES | OTHER\n"
 					+ "Language : \""+language+"\"\n"
@@ -332,7 +364,7 @@ public class ConfigManager {
 					+ "UpdateCheck: "+updateCheck+"\n"
 					+ "\n"
 					+ "# [Do not touch] Configuration version\n"
-					+ "ConfigVersion: 1.0.4#CREATION");
+					+ "ConfigVersion: 1.0.5#CREATION");
 			writer.close();
 			
 		} catch (FileNotFoundException e) {
