@@ -8,6 +8,7 @@ import fr.mpremont.confirmmenu.MainClass;
 import fr.mpremont.confirmmenu.events.CloseEvents;
 import fr.mpremont.confirmmenu.events.CommandsEvents;
 import fr.mpremont.confirmmenu.events.GlobalEvents;
+import fr.mpremont.confirmmenu.events.JoinEvents;
 import fr.mpremont.confirmmenu.events.MenuEvents;
 
 public class EventsManager {
@@ -21,6 +22,7 @@ public class EventsManager {
 		pm.registerEvents(new CloseEvents(), p);
 		pm.registerEvents(new GlobalEvents(), p);
 		pm.registerEvents(new CommandsEvents(), p);
+		pm.registerEvents(new JoinEvents(), p);
 		
 	}
 

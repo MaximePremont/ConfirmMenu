@@ -17,6 +17,8 @@ public class MainClass extends JavaPlugin{
 	
 	private static Plugin p;
 	
+	public static boolean update = false;
+	
 	public void onEnable() {
 		
 		p = this;
@@ -47,6 +49,7 @@ public class MainClass extends JavaPlugin{
 						
 						UpdateChecker updater = new UpdateChecker(this, 76279);
 						if(updater.checkForUpdates()) {
+							update = true;
 							Bukkit.getConsoleSender().sendMessage("§b[§eConfirmMenu§b] §r"+getConfig().getString("Text.NewVersion").replaceAll("&", "§"));
 						}
 						

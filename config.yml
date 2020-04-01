@@ -5,6 +5,8 @@ Commands: "stop, reload"
 
 # Enable open sound
 OpenSound: true
+# OP players have permission to skip confirmation by default ( confirmmenu.skip )
+SkipPermsForOP : false
 # Messages ( color codes are valid )
 Text:
     ConfirmMessage: "&eAre you sure ?"
@@ -20,4 +22,4 @@ Language : "EN"
 UpdateCheck: true
 
 # [Do not touch ] Configuration version
-ConfigVersion: 1.0.4#en
+ConfigVersion: 1.0.6#en

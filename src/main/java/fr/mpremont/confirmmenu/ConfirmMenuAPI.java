@@ -7,6 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import fr.mpremont.confirmmenu.events.custom.CancelEvent;
+import fr.mpremont.confirmmenu.events.custom.ConfirmEvent;
 import fr.mpremont.confirmmenu.menus.ConfirmMenu;
 
 public class ConfirmMenuAPI {
@@ -15,11 +16,24 @@ public class ConfirmMenuAPI {
 	
 	public static void confirm(Player player, String action) {
 		
-		if(!isConfirming(player)) {
-			
-			list.put(player.getUniqueId(), action);
-			ConfirmMenu.openMenu(player);
-			
+		boolean wasOP = false;
+		if(!MainClass.getInstance().getConfig().getBoolean("SkipPermsForOP")) {
+			if(player.isOp()) {
+				wasOP = true;
+				player.setOp(false);
+			}
+		}
+		if(player.hasPermission("confirmmenu.skip")) {
+			ConfirmEvent event = new ConfirmEvent(player, getConfirmAction(player));
+			Bukkit.getPluginManager().callEvent(event);
+		}else {
+			if(!isConfirming(player)) {
+				list.put(player.getUniqueId(), action);
+				ConfirmMenu.openMenu(player);
+			}
+		}
+		if(wasOP) {
+			player.setOp(true);
 		}
 		
 	}

@@ -25,7 +25,7 @@ public class ConfigManager {
 			Configuration c = MainClass.getInstance().getConfig();
 			String version = c.getString("ConfigVersion").split("#")[0];
 			
-			if(!version.equalsIgnoreCase("1.0.5")) {
+			if(!version.equalsIgnoreCase("1.0.6")) {
 				
 				setBasic(c);
 				MainClass.getInstance().reloadConfig();
@@ -68,6 +68,10 @@ public class ConfigManager {
 		if(openSound == null || openSound == "") {
 			openSound = "true";
 		}
+		String SkipPermsForOP = c.getString("SkipPermsForOP");
+		if(SkipPermsForOP == null || SkipPermsForOP == "") {
+			SkipPermsForOP = "false";
+		}
 		String confirmMessage = c.getString("Text.ConfirmMessage");
 		if(confirmMessage == null || confirmMessage == "") {
 			confirmMessage = "&eAre you sure ?";
@@ -107,6 +111,8 @@ public class ConfigManager {
 					+ "\n"
 					+ "# Enable open sound\n"
 					+ "OpenSound: "+openSound+"\n"
+					+ "# OP players have permission to skip confirmation by default ( confirmmenu.skip )\n"
+					+ "SkipPermsForOP: "+SkipPermsForOP+"\n"
 					+ "# Messages ( color codes are valid )\n"
 					+ "Text:\n"
 					+ "    ConfirmMessage: \""+confirmMessage+"\"\n"
@@ -122,7 +128,7 @@ public class ConfigManager {
 					+ "UpdateCheck: "+updateCheck+"\n"
 					+ "\n"
 					+ "# [Do not touch] Configuration version\n"
-					+ "ConfigVersion: 1.0.5#other");
+					+ "ConfigVersion: 1.0.6#other");
 			writer.close();
 			
 		} catch (FileNotFoundException e) {
@@ -140,6 +146,10 @@ public class ConfigManager {
 		String openSound = c.getString("OpenSound");
 		if(openSound == null || openSound == "") {
 			openSound = "true";
+		}
+		String SkipPermsForOP = c.getString("SkipPermsForOP");
+		if(SkipPermsForOP == null || SkipPermsForOP == "") {
+			SkipPermsForOP = "false";
 		}
 		String confirmMessage = "&eEstas seguro ?";
 		String menuTitle = "&8&lCONFIRMAR";
@@ -162,6 +172,8 @@ public class ConfigManager {
 					+ "\n"
 					+ "# Activa el sonido de apertura del menú\n"
 					+ "OpenSound: "+openSound+"\n"
+					+ "# Los jugadores OP tienen permiso para pasar la confirmación ( confirmmenu.skip )\n"
+					+ "SkipPermsForOP: "+SkipPermsForOP+"\n"
 					+ "# Mensajes ( los códigos de colores funcionan )\n"
 					+ "Text:\n"
 					+ "    ConfirmMessage: \""+confirmMessage+"\"\n"
@@ -177,7 +189,7 @@ public class ConfigManager {
 					+ "UpdateCheck: "+updateCheck+"\n"
 					+ "\n"
 					+ "# [No modificar] Versión de configuración\n"
-					+ "ConfigVersion: 1.0.5#es");
+					+ "ConfigVersion: 1.0.6#es");
 			writer.close();
 			
 		} catch (FileNotFoundException e) {
@@ -195,6 +207,10 @@ public class ConfigManager {
 		String openSound = c.getString("OpenSound");
 		if(openSound == null || openSound == "") {
 			openSound = "true";
+		}
+		String SkipPermsForOP = c.getString("SkipPermsForOP");
+		if(SkipPermsForOP == null || SkipPermsForOP == "") {
+			SkipPermsForOP = "false";
 		}
 		String confirmMessage = "&eÊtes-vous sûr ?";
 		String menuTitle = "&8&lCONFIRMATION";
@@ -217,6 +233,8 @@ public class ConfigManager {
 					+ "\n"
 					+ "# Activer le son d'ouverture du menu\n"
 					+ "OpenSound: "+openSound+"\n"
+					+ "# Les joueurs OP ont la permission de passer la confirmation ( confirmmenu.skip )\n"
+					+ "SkipPermsForOP: "+SkipPermsForOP+"\n"
 					+ "# Messages ( les codes couleurs fonctionnent )\n"
 					+ "Text:\n"
 					+ "    ConfirmMessage: \""+confirmMessage+"\"\n"
@@ -232,7 +250,7 @@ public class ConfigManager {
 					+ "UpdateCheck: "+updateCheck+"\n"
 					+ "\n"
 					+ "# [Ne pas modifier] Version de la configuration\n"
-					+ "ConfigVersion: 1.0.5#fr");
+					+ "ConfigVersion: 1.0.6#fr");
 			writer.close();
 			
 		} catch (FileNotFoundException e) {
@@ -250,6 +268,10 @@ public class ConfigManager {
 		String openSound = c.getString("OpenSound");
 		if(openSound == null || openSound == "") {
 			openSound = "true";
+		}
+		String SkipPermsForOP = c.getString("SkipPermsForOP");
+		if(SkipPermsForOP == null || SkipPermsForOP == "") {
+			SkipPermsForOP = "false";
 		}
 		String confirmMessage = "&eAre you sure ?";
 		String menuTitle = "&8&lCONFIRM";
@@ -272,6 +294,8 @@ public class ConfigManager {
 					+ "\n"
 					+ "# Enable open sound\n"
 					+ "OpenSound: "+openSound+"\n"
+					+ "# OP players have permission to skip confirmation by default ( confirmmenu.skip )\n"
+					+ "SkipPermsForOP: "+SkipPermsForOP+"\n"
 					+ "# Messages ( color codes are valid )\n"
 					+ "Text:\n"
 					+ "    ConfirmMessage: \""+confirmMessage+"\"\n"
@@ -287,7 +311,7 @@ public class ConfigManager {
 					+ "UpdateCheck: "+updateCheck+"\n"
 					+ "\n"
 					+ "# [Do not touch] Configuration version\n"
-					+ "ConfigVersion: 1.0.5#en");
+					+ "ConfigVersion: 1.0.6#en");
 			writer.close();
 			
 		} catch (FileNotFoundException e) {
@@ -305,6 +329,10 @@ public class ConfigManager {
 		String openSound = c.getString("OpenSound");
 		if(openSound == null || openSound == "") {
 			openSound = "true";
+		}
+		String SkipPermsForOP = c.getString("SkipPermsForOP");
+		if(SkipPermsForOP == null || SkipPermsForOP == "") {
+			SkipPermsForOP = "false";
 		}
 		String confirmMessage = c.getString("Text.ConfirmMessage");
 		if(confirmMessage == null || confirmMessage == "") {
@@ -349,6 +377,8 @@ public class ConfigManager {
 					+ "\n"
 					+ "# Enable open sound\n"
 					+ "OpenSound: "+openSound+"\n"
+					+ "# OP players have permission to skip confirmation by default ( confirmmenu.skip )\n"
+					+ "SkipPermsForOP: "+SkipPermsForOP+"\n"
 					+ "# Messages ( color codes are valid )\n"
 					+ "Text:\n"
 					+ "    ConfirmMessage: \""+confirmMessage+"\"\n"
@@ -364,7 +394,7 @@ public class ConfigManager {
 					+ "UpdateCheck: "+updateCheck+"\n"
 					+ "\n"
 					+ "# [Do not touch] Configuration version\n"
-					+ "ConfigVersion: 1.0.5#CREATION");
+					+ "ConfigVersion: 1.0.6#CREATION");
 			writer.close();
 			
 		} catch (FileNotFoundException e) {
