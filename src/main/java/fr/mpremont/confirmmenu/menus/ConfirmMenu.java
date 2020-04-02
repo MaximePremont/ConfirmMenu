@@ -21,7 +21,11 @@ public class ConfirmMenu {
 			p.sendMessage("§b[§eConfirmMenu§b] §r"+MainClass.getInstance().getConfig().getString("Text.ConfirmMessage").replaceAll("&", "§"));
 		}
 		
-		Inventory i = Bukkit.createInventory(null, 9, "§8§lCONFIRM");
+		String title = "§8§lCONFIRM";
+		if(MainClass.getInstance().getConfig().getString("Text.MenuTitle") != null || MainClass.getInstance().getConfig().getString("Text.MenuTitle") != "") {
+			title = MainClass.getInstance().getConfig().getString("Text.MenuTitle").replaceAll("&", "§");
+		}
+		Inventory i = Bukkit.createInventory(null, 9, title);
 		
 		ItemStack ISc = new ItemStack(Material.SLIME_BLOCK);
 		ItemMeta IMc = ISc.getItemMeta();
