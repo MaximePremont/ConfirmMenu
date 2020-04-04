@@ -8,13 +8,15 @@ import org.bukkit.entity.Player;
 
 import fr.mpremont.confirmmenu.events.custom.CancelEvent;
 import fr.mpremont.confirmmenu.events.custom.ConfirmEvent;
+import fr.mpremont.confirmmenu.events.custom.ConfirmationType;
+import fr.mpremont.confirmmenu.managers.VersionsManager;
 import fr.mpremont.confirmmenu.menus.ConfirmMenu;
 
 public class ConfirmMenuAPI {
 	
 	private static HashMap<UUID, String> list = new HashMap<UUID, String>();
 	
-	public static void confirm(Player player, String action) {
+	public static void confirm(Player player, String action, ConfirmationType type) {
 		
 		boolean wasOP = false;
 		if(!MainClass.getInstance().getConfig().getBoolean("SkipPermsForOP")) {
@@ -29,7 +31,14 @@ public class ConfirmMenuAPI {
 		}else {
 			if(!isConfirming(player)) {
 				list.put(player.getUniqueId(), action);
-				ConfirmMenu.openMenu(player);
+				if(type == ConfirmationType.MENU) {
+					ConfirmMenu.openMenu(player);
+				}else {
+					if(MainClass.getInstance().getConfig().getBoolean("OpenSound")) {
+						player.playSound(player.getLocation(), VersionsManager.use().getSound("CHICKEN_EGG_POP"), 10, 1);
+					}
+					player.sendMessage("§b[§eConfirmMenu§b] §r"+MainClass.getInstance().getConfig().getString("Text.WriteConfirmMessage").replaceAll("&", "§"));
+				}
 			}
 		}
 		if(wasOP) {
@@ -45,6 +54,7 @@ public class ConfirmMenuAPI {
 			CancelEvent event = new CancelEvent(player, getConfirmAction(player));
 			list.remove(player.getUniqueId());
 			Bukkit.getPluginManager().callEvent(event);
+			player.sendMessage("§b[§eConfirmMenu§b] §r"+MainClass.getInstance().getConfig().getString("Text.CancelMessage").replaceAll("&", "§"));
 			if(player.getOpenInventory() != null) {
 				player.closeInventory();
 			}

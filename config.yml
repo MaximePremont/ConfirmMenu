@@ -1,7 +1,9 @@
 # ========== Confirm Menu by MaximePremont ==========
 
-# List of commands that require confirmation
-Commands: "stop, reload"
+# List of commands that require a confirmation with menu
+Commands: "reload, stop"
+# List of commands that require a confirmation by writing "confirm"
+CommandsWrite: "kick, ban"
 
 # Enable open sound
 OpenSound: true
@@ -10,6 +12,8 @@ SkipPermsForOP : false
 # Messages ( color codes are valid )
 Text:
     ConfirmMessage: "&eAre you sure ?"
+    WriteConfirmMessage: "&eWrite CONFIRM to confirm, or something else to cancel."
+    CancelMessage: "&cCanceled !"
     MenuTitle: "&8&lCONFIRM"
     MenuConfirm: "&a&lCONFIRM"
     MenuCancel: "&c&lCANCEL"
@@ -22,4 +26,4 @@ Language : "EN"
 UpdateCheck: true
 
 # [Do not touch ] Configuration version
-ConfigVersion: 1.0.6#en
+ConfigVersion: 1.0.8#en

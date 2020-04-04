@@ -7,6 +7,7 @@ import fr.mpremont.confirmmenu.MainClass;
 public class CommandsManager{
 	
 	private static ArrayList<String> commands = new ArrayList<String>();
+	private static ArrayList<String> commandsWrite = new ArrayList<String>();
 
 	public static void registerCommands() {
 		
@@ -16,18 +17,23 @@ public class CommandsManager{
 			
 		}
 		
-	}
-	
-	public static boolean isRegistered(String cmd) {
-		
-		boolean result = false;
-		if(commands.contains(cmd)) {
+		for(String s : MainClass.getInstance().getConfig().getString("CommandsWrite").replaceAll(" ", "").split(",")) {
 			
-			result = true;
+			commandsWrite.add(s);
 			
 		}
 		
-		return result;
+	}
+	
+	public static boolean isRegisteredMenu(String cmd) {
+		
+		return commands.contains(cmd);
+		
+	}
+	
+	public static boolean isRegisteredWrite(String cmd) {
+		
+		return commandsWrite.contains(cmd);
 		
 	}
 	

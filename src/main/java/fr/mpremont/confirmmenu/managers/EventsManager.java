@@ -5,6 +5,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 
 import fr.mpremont.confirmmenu.MainClass;
+import fr.mpremont.confirmmenu.events.ChatEvents;
 import fr.mpremont.confirmmenu.events.CloseEvents;
 import fr.mpremont.confirmmenu.events.CommandsEvents;
 import fr.mpremont.confirmmenu.events.GlobalEvents;
@@ -23,6 +24,7 @@ public class EventsManager {
 		pm.registerEvents(new GlobalEvents(), p);
 		pm.registerEvents(new CommandsEvents(), p);
 		pm.registerEvents(new JoinEvents(), p);
+		pm.registerEvents(new ChatEvents(), p);
 		
 	}
 

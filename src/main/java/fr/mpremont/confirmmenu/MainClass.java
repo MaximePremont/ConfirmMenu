@@ -3,6 +3,7 @@ package fr.mpremont.confirmmenu;
 import java.io.File;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -69,6 +70,23 @@ public class MainClass extends JavaPlugin{
 			
 			Bukkit.getConsoleSender().sendMessage("§b[§eConfirmMenu§b] §cUnsupported minecraft version !");
 			Bukkit.getPluginManager().disablePlugin(this);
+			
+		}
+		
+	}
+	
+	public void onDisable() {
+		
+		for(Player pls : Bukkit.getOnlinePlayers()) {
+			
+			if(ConfirmMenuAPI.isConfirming(pls)) {
+				
+				if(pls.getOpenInventory() != null) {
+					pls.closeInventory();
+				}
+				ConfirmMenuAPI.w(pls);
+				
+			}
 			
 		}
 		

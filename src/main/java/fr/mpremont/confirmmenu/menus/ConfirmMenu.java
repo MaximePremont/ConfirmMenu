@@ -8,15 +8,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import fr.mpremont.confirmmenu.MainClass;
-import fr.mpremont.confirmmenu.managers.VersionsManager;
 
 public class ConfirmMenu {
 	
 	public static void openMenu(Player p) {
 		
-		if(MainClass.getInstance().getConfig().getBoolean("OpenSound")) {
-			p.playSound(p.getLocation(), VersionsManager.use().getSound("CHICKEN_EGG_POP"), 10, 1);
-		}
 		if(MainClass.getInstance().getConfig().getString("Text.ConfirmMessage") != null || MainClass.getInstance().getConfig().getString("Text.ConfirmMessage") != "") {
 			p.sendMessage("§b[§eConfirmMenu§b] §r"+MainClass.getInstance().getConfig().getString("Text.ConfirmMessage").replaceAll("&", "§"));
 		}

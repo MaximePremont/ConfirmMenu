@@ -25,7 +25,7 @@ public class ConfigManager {
 			Configuration c = MainClass.getInstance().getConfig();
 			String version = c.getString("ConfigVersion").split("#")[0];
 			
-			if(!version.equalsIgnoreCase("1.0.6")) {
+			if(!version.equalsIgnoreCase("1.0.8")) {
 				
 				setBasic(c);
 				MainClass.getInstance().reloadConfig();
@@ -64,6 +64,10 @@ public class ConfigManager {
 		if(commands == null || commands == "") {
 			commands = "stop, reload";
 		}
+		String commandsWrite = c.getString("CommandsWrite");
+		if(commandsWrite == null || commandsWrite == "") {
+			commands = "kick, ban";
+		}
 		String openSound = c.getString("OpenSound");
 		if(openSound == null || openSound == "") {
 			openSound = "true";
@@ -75,6 +79,14 @@ public class ConfigManager {
 		String confirmMessage = c.getString("Text.ConfirmMessage");
 		if(confirmMessage == null || confirmMessage == "") {
 			confirmMessage = "&eAre you sure ?";
+		}
+		String WriteConfirmMessage = c.getString("Text.WriteConfirmMessage");
+		if(WriteConfirmMessage == null || WriteConfirmMessage == "") {
+			confirmMessage = "&eWrite CONFIRM to confirm, or something else to cancel.";
+		}
+		String cancelMessage = c.getString("CancelMessage");
+		if(cancelMessage == null || cancelMessage == "") {
+			cancelMessage = "&cCanceled !";
 		}
 		String menuTitle = c.getString("Text.MenuTitle");
 		if(menuTitle == null || menuTitle == "") {
@@ -108,6 +120,8 @@ public class ConfigManager {
 					+ "\n"
 					+ "# List of commands that require confirmation\n"
 					+ "Commands: \""+commands+"\"\n"
+					+ "# List of commands that require a confirmation by writing \"confirm\"\n"
+					+ "CommandsWrite: \""+commandsWrite+"\"\n"
 					+ "\n"
 					+ "# Enable open sound\n"
 					+ "OpenSound: "+openSound+"\n"
@@ -116,6 +130,8 @@ public class ConfigManager {
 					+ "# Messages ( color codes are valid )\n"
 					+ "Text:\n"
 					+ "    ConfirmMessage: \""+confirmMessage+"\"\n"
+					+ "    WriteConfirmMessage: \""+WriteConfirmMessage+"\"\n"
+					+ "    CancelMessage: \""+cancelMessage+"\"\n"
 					+ "    MenuTitle: \""+menuTitle+"\"\n"
 					+ "    MenuConfirm: \""+menuConfirm+"\"\n"
 					+ "    MenuCancel: \""+menuCancel+"\"\n"
@@ -128,7 +144,7 @@ public class ConfigManager {
 					+ "UpdateCheck: "+updateCheck+"\n"
 					+ "\n"
 					+ "# [Do not touch] Configuration version\n"
-					+ "ConfigVersion: 1.0.6#other");
+					+ "ConfigVersion: 1.0.8#other");
 			writer.close();
 			
 		} catch (FileNotFoundException e) {
@@ -143,6 +159,10 @@ public class ConfigManager {
 		if(commands == null || commands == "") {
 			commands = "stop, reload";
 		}
+		String commandsWrite = c.getString("CommandsWrite");
+		if(commandsWrite == null || commandsWrite == "") {
+			commandsWrite = "kick, ban";
+		}
 		String openSound = c.getString("OpenSound");
 		if(openSound == null || openSound == "") {
 			openSound = "true";
@@ -152,6 +172,8 @@ public class ConfigManager {
 			SkipPermsForOP = "false";
 		}
 		String confirmMessage = "&eEstas seguro ?";
+		String WriteConfirmMessage = "&eEscriba CONFIRM para confirmar, o algo más para cancelar.";
+		String cancelMessage = "&c¡Cancelado!";
 		String menuTitle = "&8&lCONFIRMAR";
 		String menuConfirm = "&a&lCONFIRMAR";
 		String menuCancel = "&c&lCANCELAR";
@@ -169,6 +191,8 @@ public class ConfigManager {
 					+ "\n"
 					+ "# Lista de comandos que necesitan confirmación\n"
 					+ "Commands: \""+commands+"\"\n"
+					+ "# Lista de comandos que pueden confirmarse escribiendo \"CONFIRM\"\n"
+					+ "CommandsWrite: \""+commandsWrite+"\"\n"
 					+ "\n"
 					+ "# Activa el sonido de apertura del menú\n"
 					+ "OpenSound: "+openSound+"\n"
@@ -177,6 +201,8 @@ public class ConfigManager {
 					+ "# Mensajes ( los códigos de colores funcionan )\n"
 					+ "Text:\n"
 					+ "    ConfirmMessage: \""+confirmMessage+"\"\n"
+					+ "    WriteConfirmMessage: \""+WriteConfirmMessage+"\"\n"
+					+ "    CancelMessage: \""+cancelMessage+"\"\n"
 					+ "    MenuTitle: \""+menuTitle+"\"\n"
 					+ "    MenuConfirm: \""+menuConfirm+"\"\n"
 					+ "    MenuCancel: \""+menuCancel+"\"\n"
@@ -189,7 +215,7 @@ public class ConfigManager {
 					+ "UpdateCheck: "+updateCheck+"\n"
 					+ "\n"
 					+ "# [No modificar] Versión de configuración\n"
-					+ "ConfigVersion: 1.0.6#es");
+					+ "ConfigVersion: 1.0.8#es");
 			writer.close();
 			
 		} catch (FileNotFoundException e) {
@@ -204,6 +230,10 @@ public class ConfigManager {
 		if(commands == null || commands == "") {
 			commands = "stop, reload";
 		}
+		String commandsWrite = c.getString("CommandsWrite");
+		if(commandsWrite == null || commandsWrite == "") {
+			commandsWrite = "kick, ban";
+		}
 		String openSound = c.getString("OpenSound");
 		if(openSound == null || openSound == "") {
 			openSound = "true";
@@ -213,6 +243,8 @@ public class ConfigManager {
 			SkipPermsForOP = "false";
 		}
 		String confirmMessage = "&eÊtes-vous sûr ?";
+		String WriteConfirmMessage = "&eEcris CONFIRM pour confirmer, écris autre chose pour annuler.";
+		String cancelMessage = "&cAnnulé !";
 		String menuTitle = "&8&lCONFIRMATION";
 		String menuConfirm = "&a&lCONFIRMER";
 		String menuCancel = "&c&lANNULER";
@@ -230,6 +262,8 @@ public class ConfigManager {
 					+ "\n"
 					+ "# Liste des commandes qui ont besoins d'une confirmation\n"
 					+ "Commands: \""+commands+"\"\n"
+					+ "# Liste des commandes qui peuvent êtres confirmées en écrivant \"CONFIRM\"\n"
+					+ "CommandsWrite: \""+commandsWrite+"\"\n"
 					+ "\n"
 					+ "# Activer le son d'ouverture du menu\n"
 					+ "OpenSound: "+openSound+"\n"
@@ -238,6 +272,8 @@ public class ConfigManager {
 					+ "# Messages ( les codes couleurs fonctionnent )\n"
 					+ "Text:\n"
 					+ "    ConfirmMessage: \""+confirmMessage+"\"\n"
+					+ "    WriteConfirmMessage: \""+WriteConfirmMessage+"\"\n"
+					+ "    CancelMessage: \""+cancelMessage+"\"\n"
 					+ "    MenuTitle: \""+menuTitle+"\"\n"
 					+ "    MenuConfirm: \""+menuConfirm+"\"\n"
 					+ "    MenuCancel: \""+menuCancel+"\"\n"
@@ -250,7 +286,7 @@ public class ConfigManager {
 					+ "UpdateCheck: "+updateCheck+"\n"
 					+ "\n"
 					+ "# [Ne pas modifier] Version de la configuration\n"
-					+ "ConfigVersion: 1.0.6#fr");
+					+ "ConfigVersion: 1.0.8#fr");
 			writer.close();
 			
 		} catch (FileNotFoundException e) {
@@ -265,6 +301,10 @@ public class ConfigManager {
 		if(commands == null || commands == "") {
 			commands = "stop, reload";
 		}
+		String commandsWrite = c.getString("CommandsWrite");
+		if(commandsWrite == null || commandsWrite == "") {
+			commands = "kick, ban";
+		}
 		String openSound = c.getString("OpenSound");
 		if(openSound == null || openSound == "") {
 			openSound = "true";
@@ -274,6 +314,8 @@ public class ConfigManager {
 			SkipPermsForOP = "false";
 		}
 		String confirmMessage = "&eAre you sure ?";
+		String WriteConfirmMessage = "&eWrite CONFIRM to confirm, or something else to cancel.";
+		String cancelMessage = "&cCanceled !";
 		String menuTitle = "&8&lCONFIRM";
 		String menuConfirm = "&a&lCONFIRM";
 		String menuCancel = "&c&lCANCEL";
@@ -291,6 +333,8 @@ public class ConfigManager {
 					+ "\n"
 					+ "# List of commands that require confirmation\n"
 					+ "Commands: \""+commands+"\"\n"
+					+ "# List of commands that require a confirmation by writing \"confirm\"\n"
+					+ "CommandsWrite: \""+commandsWrite+"\"\n"
 					+ "\n"
 					+ "# Enable open sound\n"
 					+ "OpenSound: "+openSound+"\n"
@@ -299,6 +343,8 @@ public class ConfigManager {
 					+ "# Messages ( color codes are valid )\n"
 					+ "Text:\n"
 					+ "    ConfirmMessage: \""+confirmMessage+"\"\n"
+					+ "    WriteConfirmMessage: \""+WriteConfirmMessage+"\"\n"
+					+ "    CancelMessage: \""+cancelMessage+"\"\n"
 					+ "    MenuTitle: \""+menuTitle+"\"\n"
 					+ "    MenuConfirm: \""+menuConfirm+"\"\n"
 					+ "    MenuCancel: \""+menuCancel+"\"\n"
@@ -311,7 +357,7 @@ public class ConfigManager {
 					+ "UpdateCheck: "+updateCheck+"\n"
 					+ "\n"
 					+ "# [Do not touch] Configuration version\n"
-					+ "ConfigVersion: 1.0.6#en");
+					+ "ConfigVersion: 1.0.8#en");
 			writer.close();
 			
 		} catch (FileNotFoundException e) {
@@ -326,6 +372,10 @@ public class ConfigManager {
 		if(commands == null || commands == "") {
 			commands = "stop, reload";
 		}
+		String commandsWrite = c.getString("CommandsWrite");
+		if(commandsWrite == null || commandsWrite == "") {
+			commands = "kick, ban";
+		}
 		String openSound = c.getString("OpenSound");
 		if(openSound == null || openSound == "") {
 			openSound = "true";
@@ -337,6 +387,14 @@ public class ConfigManager {
 		String confirmMessage = c.getString("Text.ConfirmMessage");
 		if(confirmMessage == null || confirmMessage == "") {
 			confirmMessage = "&eAre you sure ?";
+		}
+		String WriteConfirmMessage = c.getString("Text.WriteConfirmMessage");
+		if(WriteConfirmMessage == null || WriteConfirmMessage == "") {
+			confirmMessage = "&eWrite CONFIRM to confirm, or something else to cancel.";
+		}
+		String cancelMessage = c.getString("CancelMessage");
+		if(cancelMessage == null || cancelMessage == "") {
+			cancelMessage = "&cCanceled !";
 		}
 		String menuTitle = c.getString("Text.MenuTitle");
 		if(menuTitle == null || menuTitle == "") {
@@ -372,8 +430,10 @@ public class ConfigManager {
 			PrintWriter writer = new PrintWriter("./plugins/ConfirmMenu/config.yml");
 			writer.println("# ========== Confirm Menu by MaximePremont ==========\n"
 					+ "\n"
-					+ "# List of commands that require confirmation\n"
+					+ "# List of commands that require a confirmation with menu\n"
 					+ "Commands: \""+commands+"\"\n"
+					+ "# List of commands that require a confirmation by writing \"confirm\"\n"
+					+ "CommandsWrite: \""+commandsWrite+"\"\n"
 					+ "\n"
 					+ "# Enable open sound\n"
 					+ "OpenSound: "+openSound+"\n"
@@ -382,6 +442,8 @@ public class ConfigManager {
 					+ "# Messages ( color codes are valid )\n"
 					+ "Text:\n"
 					+ "    ConfirmMessage: \""+confirmMessage+"\"\n"
+					+ "    WriteConfirmMessage: \""+WriteConfirmMessage+"\"\n"
+					+ "    CancelMessage: \""+cancelMessage+"\"\n"
 					+ "    MenuTitle: \""+menuTitle+"\"\n"
 					+ "    MenuConfirm: \""+menuConfirm+"\"\n"
 					+ "    MenuCancel: \""+menuCancel+"\"\n"
@@ -394,7 +456,7 @@ public class ConfigManager {
 					+ "UpdateCheck: "+updateCheck+"\n"
 					+ "\n"
 					+ "# [Do not touch] Configuration version\n"
-					+ "ConfigVersion: 1.0.6#CREATION");
+					+ "ConfigVersion: 1.0.8#CREATION");
 			writer.close();
 			
 		} catch (FileNotFoundException e) {
