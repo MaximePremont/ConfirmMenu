@@ -8,6 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
 import fr.mpremont.confirmmenu.ConfirmMenuAPI;
+import fr.mpremont.confirmmenu.MainClass;
 import fr.mpremont.confirmmenu.events.custom.ConfirmEvent;
 
 public class MenuEvents implements Listener {
@@ -24,22 +25,31 @@ public class MenuEvents implements Listener {
 			Player p = (Player) e.getWhoClicked();
 			if(ConfirmMenuAPI.isConfirming(p)) {
 				
-				e.setCancelled(true);
+				String title = "§8§lCONFIRM";
+				if(MainClass.getInstance().getConfig().getString("Text.MenuTitle") != null || MainClass.getInstance().getConfig().getString("Text.MenuTitle") != "") {
+					title = MainClass.getInstance().getConfig().getString("Text.MenuTitle").replaceAll("&", "§");
+				}
 				
-				if(e.getCurrentItem() == null || e.getCurrentItem().getType() == Material.AIR) {
+				if(e.getView().getTitle().equalsIgnoreCase(title)) {
 					
-					return;
+					e.setCancelled(true);
 					
-				}else if(e.getCurrentItem().getType() == Material.SLIME_BLOCK) {
-					
-					ConfirmEvent event = new ConfirmEvent(p, ConfirmMenuAPI.getConfirmAction(p));
-					Bukkit.getPluginManager().callEvent(event);
-					ConfirmMenuAPI.w(p);
-					p.closeInventory();
-					
-				}else {
-					
-					ConfirmMenuAPI.cancel(p);
+					if(e.getCurrentItem() == null || e.getCurrentItem().getType() == Material.AIR) {
+						
+						return;
+						
+					}else if(e.getCurrentItem().getType() == Material.SLIME_BLOCK) {
+						
+						ConfirmEvent event = new ConfirmEvent(p, ConfirmMenuAPI.getConfirmAction(p));
+						Bukkit.getPluginManager().callEvent(event);
+						ConfirmMenuAPI.w(p);
+						p.closeInventory();
+						
+					}else {
+						
+						ConfirmMenuAPI.cancel(p);
+						
+					}
 					
 				}
 				

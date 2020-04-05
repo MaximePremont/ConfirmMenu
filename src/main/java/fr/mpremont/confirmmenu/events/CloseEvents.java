@@ -6,6 +6,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 
 import fr.mpremont.confirmmenu.ConfirmMenuAPI;
+import fr.mpremont.confirmmenu.MainClass;
 
 public class CloseEvents implements Listener {
 	
@@ -16,7 +17,12 @@ public class CloseEvents implements Listener {
 		
 		if(ConfirmMenuAPI.isConfirming(p)) {
 			
-			if(e.getInventory() != null) {
+			String title = "§8§lCONFIRM";
+			if(MainClass.getInstance().getConfig().getString("Text.MenuTitle") != null || MainClass.getInstance().getConfig().getString("Text.MenuTitle") != "") {
+				title = MainClass.getInstance().getConfig().getString("Text.MenuTitle").replaceAll("&", "§");
+			}
+			
+			if(e.getView().getTitle().equalsIgnoreCase(title)) {
 				
 				ConfirmMenuAPI.cancel(p);
 				
