@@ -27,7 +27,7 @@ public class ConfigManager {
 			Configuration c = MainClass.getInstance().getConfig();
 			String version = c.getString("ConfigVersion").split("#")[0];
 			
-			if(!version.equalsIgnoreCase("1.1.0")) {
+			if(!version.equalsIgnoreCase("1.1.1")) {
 				
 				setBasic(c);
 				MainClass.getInstance().reloadConfig();
@@ -50,6 +50,8 @@ public class ConfigManager {
 					setTK(c);;
 				}else if(current.equalsIgnoreCase("ZH")) {
 					setZH(c);;
+				}else if(current.equalsIgnoreCase("RU")) {
+					setRU(c);;
 				}else if(current.equalsIgnoreCase("OTHER")) {
 					setOTHER(c);
 				}else {
@@ -63,6 +65,77 @@ public class ConfigManager {
 		}
 		
 		return result;
+		
+	}
+	
+	private static void setRU(Configuration c) {
+		
+		String commands = c.getString("Commands");
+		if(commands == null || commands == "") {
+			commands = "stop, reload";
+		}
+		String commandsWrite = c.getString("CommandsWrite");
+		if(commandsWrite == null || commandsWrite == "") {
+			commands = "kick, ban";
+		}
+		String openSound = c.getString("OpenSound");
+		if(openSound == null || openSound == "") {
+			openSound = "true";
+		}
+		String SkipPermsForOP = c.getString("SkipPermsForOP");
+		if(SkipPermsForOP == null || SkipPermsForOP == "") {
+			SkipPermsForOP = "false";
+		}
+		String confirmMessage = "&eВы уверены?";
+		String WriteConfirmMessage = "&eНапишите CONFIRM для подтверждения или любой другой текст для отмены.";
+		String cancelMessage = "&cОтменено !";
+		String menuTitle = "&8&lПОДТВЕРЖДЕНИЕ";
+		String menuConfirm = "&a&lПОДТВЕРДИТЬ";
+		String menuCancel = "&c&lОТМЕНИТЬ";
+		String newVersion = "&eДоступна новая версия плагина, необходимо обновиться !";
+		String updateFail = "&cНевозможно найти обновления !";
+		String updateCheck = c.getString("UpdateCheck");
+		if(updateCheck == null || updateCheck == "") {
+			updateCheck = "true";
+		}
+		
+		try {
+			
+			OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream("./plugins/ConfirmMenu/config.yml"), StandardCharsets.UTF_8);
+			writer.write("# ========== Confirm Menu by MaximePremont ==========\n"
+					+ "\n"
+					+ "# Список команд, которые нуждаются в подтверждении\n"
+					+ "Commands: \""+commands+"\"\n"
+					+ "# Список команд, которые нуждаются в подтверждении, через написание \"confirm\"\n"
+					+ "CommandsWrite: \""+commandsWrite+"\"\n"
+					+ "\n"
+					+ "# Звук при открытии меню подтверждения\n"
+					+ "OpenSound: "+openSound+"\n"
+					+ "# Операторы сервера могут пропустить подтверждение (confirmmenu.skip)\n"
+					+ "SkipPermsForOP: "+SkipPermsForOP+"\n"
+					+ "# Локализация (с поддержкой цветовых кодов)\n"
+					+ "Text:\n"
+					+ "    ConfirmMessage: \""+confirmMessage+"\"\n"
+					+ "    WriteConfirmMessage: \""+WriteConfirmMessage+"\"\n"
+					+ "    CancelMessage: \""+cancelMessage+"\"\n"
+					+ "    MenuTitle: \""+menuTitle+"\"\n"
+					+ "    MenuConfirm: \""+menuConfirm+"\"\n"
+					+ "    MenuCancel: \""+menuCancel+"\"\n"
+					+ "    NewVersion: \""+newVersion+"\"\n"
+					+ "    UpdateFail: \""+updateFail+"\"\n"
+					+ "# Смена языка приведёт к автоматической смене конфигурации при рестарте сервера\n"
+					+ "# Доступные языки : EN | FR | ES | DE | TK | ZH | RU | OTHER\n"
+					+ "Language : \"RU\"\n"
+					+ "# Проверять ли обновления и оповещать о новых версиях в консоль\n"
+					+ "UpdateCheck: "+updateCheck+"\n"
+					+ "\n"
+					+ "# [Не трогать!] Версия конфигурации\n"
+					+ "ConfigVersion: 1.1.1#ru");
+			writer.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -122,13 +195,13 @@ public class ConfigManager {
 					+ "    NewVersion: \""+newVersion+"\"\n"
 					+ "    UpdateFail: \""+updateFail+"\"\n"
 					+ "# 更改语言，将在重新载入插件时更新\n"
-					+ "# 可用语言 : EN | FR | ES | DE | TK | ZH | OTHER\n"
+					+ "# 可用语言 : EN | FR | ES | DE | TK | ZH | RU | OTHER\n"
 					+ "Language : \"ZH\"\n"
 					+ "# 是否检测更新\n"
 					+ "UpdateCheck: "+updateCheck+"\n"
 					+ "\n"
 					+ "# [不要更改！] 插件版本\n"
-					+ "ConfigVersion: 1.1.0#zh");
+					+ "ConfigVersion: 1.1.1#zh");
 			writer.close();
 			
 		} catch (IOException e) {
@@ -157,7 +230,7 @@ public class ConfigManager {
 		}
 		String confirmMessage = "&eEmin misin ?";
 		String WriteConfirmMessage = "&eCONFIRM yazarak onayla, yoksa kısa sürede iptal olacak.";
-		String cancelMessage = "&cIptal edildi!";
+		String cancelMessage = "&cIptal edildi !";
 		String menuTitle = "&8&lONAYLA";
 		String menuConfirm = "&a&lONAYLA";
 		String menuCancel = "&c&lIPTAL ET";
@@ -173,7 +246,7 @@ public class ConfigManager {
 			OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream("./plugins/ConfirmMenu/config.yml"), StandardCharsets.UTF_8);
 			writer.write("# ========== Confirm Menu by MaximePremont ==========\n"
 					+ "\n"
-					+ "# Onaylama gerektiren komuylar\n"
+					+ "# Onaylama gerektiren komutlar\n"
 					+ "Commands: \""+commands+"\"\n"
 					+ "# \"confirm\" yazılarak onaylanacak komutlar\n"
 					+ "CommandsWrite: \""+commandsWrite+"\"\n"
@@ -182,7 +255,7 @@ public class ConfigManager {
 					+ "OpenSound: "+openSound+"\n"
 					+ "# OP olanların Onaylama menüsünü yetki ile atlaması (confirmmenu.skip)\n"
 					+ "SkipPermsForOP: "+SkipPermsForOP+"\n"
-					+ "# Mesajlar (Mesaj kodları kullanılabilir)\n"
+					+ "# Mesajlar (Renk kodları kullanılabilir)\n"
 					+ "Text:\n"
 					+ "    ConfirmMessage: \""+confirmMessage+"\"\n"
 					+ "    WriteConfirmMessage: \""+WriteConfirmMessage+"\"\n"
@@ -192,14 +265,14 @@ public class ConfigManager {
 					+ "    MenuCancel: \""+menuCancel+"\"\n"
 					+ "    NewVersion: \""+newVersion+"\"\n"
 					+ "    UpdateFail: \""+updateFail+"\"\n"
-					+ "# Dil'i değiştirmek yeniden başlatmadan sonra aktif olacaktır.\n"
-					+ "# Mevcut diller : EN | FR | ES | DE | TK | ZH | OTHER\n"
+					+ "# Dil'in değiştirilmesi yeniden başlatmadan sonra aktif olacaktır.\n"
+					+ "# Mevcut diller : EN | FR | ES | DE | TK | ZH | RU | OTHER\n"
 					+ "Language : \"TK\"\n"
 					+ "# Güncellemeleri kontrol et ve konsol'a mesaj gönder\n"
 					+ "UpdateCheck: "+updateCheck+"\n"
 					+ "\n"
 					+ "# [DOKUNMA] Ayarlar dosyası versiyonu\n"
-					+ "ConfigVersion: 1.1.0#tk");
+					+ "ConfigVersion: 1.1.1#tk");
 			writer.close();
 			
 		} catch (IOException e) {
@@ -264,13 +337,13 @@ public class ConfigManager {
 					+ "    NewVersion: \""+newVersion+"\"\n"
 					+ "    UpdateFail: \""+updateFail+"\"\n"
 					+ "# Durch das Ändern der Sprache wird die Konfiguration beim nächsten Neustart automatisch geändert und angewendet.\n"
-					+ "# Verfügbare Sprachen : EN | FR | ES | DE | TK | ZH | OTHER\n"
+					+ "# Verfügbare Sprachen : EN | FR | ES | DE | TK | ZH | RU | OTHER\n"
 					+ "Language : \"DE\"\n"
 					+ "# Suche nach updates und schreibe dies in die Konsole?\n"
 					+ "UpdateCheck: "+updateCheck+"\n"
 					+ "\n"
 					+ "# [NICHT VERÄNDERN!] Konfigurations-Version\n"
-					+ "ConfigVersion: 1.1.0#de");
+					+ "ConfigVersion: 1.1.1#de");
 			writer.close();
 			
 		} catch (IOException e) {
@@ -359,13 +432,13 @@ public class ConfigManager {
 					+ "    NewVersion: \""+newVersion+"\"\n"
 					+ "    UpdateFail: \""+updateFail+"\"\n"
 					+ "# Changing the language will automatically change the configuration on the next reboot\n"
-					+ "# Available languages : EN | FR | ES | DE | TK | ZH | OTHER\n"
+					+ "# Available languages : EN | FR | ES | DE | TK | ZH | RU | OTHER\n"
 					+ "Language : \"OTHER\"\n"
 					+ "# Check for updates and send a message to the console\n"
 					+ "UpdateCheck: "+updateCheck+"\n"
 					+ "\n"
 					+ "# [Do not touch] Configuration version\n"
-					+ "ConfigVersion: 1.1.0#other");
+					+ "ConfigVersion: 1.1.1#other");
 			writer.close();
 			
 		} catch (IOException e) {
@@ -430,13 +503,13 @@ public class ConfigManager {
 					+ "    NewVersion: \""+newVersion+"\"\n"
 					+ "    UpdateFail: \""+updateFail+"\"\n"
 					+ "# Cambiar el idioma cambiará automáticamente la configuración en el próximo reinicio\n"
-					+ "# Idiomas disponibles : EN | FR | ES | DE | TK | ZH | OTHER\n"
+					+ "# Idiomas disponibles : EN | FR | ES | DE | TK | ZH | RU | OTHER\n"
 					+ "Language : \"ES\"\n"
 					+ "# Comprube si hay un actualización e indíquela en la consola\n"
 					+ "UpdateCheck: "+updateCheck+"\n"
 					+ "\n"
 					+ "# [No modificar] Versión de configuración\n"
-					+ "ConfigVersion: 1.1.0#es");
+					+ "ConfigVersion: 1.1.1#es");
 			writer.close();
 			
 		} catch (IOException e) {
@@ -501,13 +574,13 @@ public class ConfigManager {
 					+ "    NewVersion: \""+newVersion+"\"\n"
 					+ "    UpdateFail: \""+updateFail+"\"\n"
 					+ "# Changer la langue modifiera automatiquement la configuration au prochain redémarrage\n"
-					+ "# Langages disponibles : EN | FR | ES | DE | TK | ZH | OTHER\n"
+					+ "# Langages disponibles : EN | FR | ES | DE | TK | ZH | RU | OTHER\n"
 					+ "Language : \"FR\"\n"
 					+ "# Vérifier si il y à une mise à jour et l'indiquer dans la console\n"
 					+ "UpdateCheck: "+updateCheck+"\n"
 					+ "\n"
 					+ "# [Ne pas modifier] Version de la configuration\n"
-					+ "ConfigVersion: 1.1.0#fr");
+					+ "ConfigVersion: 1.1.1#fr");
 			writer.close();
 			
 		} catch (IOException e) {
@@ -572,13 +645,13 @@ public class ConfigManager {
 					+ "    NewVersion: \""+newVersion+"\"\n"
 					+ "    UpdateFail: \""+updateFail+"\"\n"
 					+ "# Changing the language will automatically change the configuration on the next reboot\n"
-					+ "# Available languages : EN | FR | ES | DE | TK | ZH | OTHER\n"
+					+ "# Available languages : EN | FR | ES | DE | TK | ZH | RU | OTHER\n"
 					+ "Language : \"EN\"\n"
 					+ "# Check for updates and send a message to the console\n"
 					+ "UpdateCheck: "+updateCheck+"\n"
 					+ "\n"
 					+ "# [Do not touch] Configuration version\n"
-					+ "ConfigVersion: 1.1.0#en");
+					+ "ConfigVersion: 1.1.1#en");
 			writer.close();
 			
 		} catch (IOException e) {
@@ -671,13 +744,13 @@ public class ConfigManager {
 					+ "    NewVersion: \""+newVersion+"\"\n"
 					+ "    UpdateFail: \""+updateFail+"\"\n"
 					+ "# Changing the language will automatically change the configuration on the next reboot\n"
-					+ "# Available languages : EN | FR | ES | DE | TK | ZH | OTHER\n"
+					+ "# Available languages : EN | FR | ES | DE | TK | ZH | RU | OTHER\n"
 					+ "Language : \""+language+"\"\n"
 					+ "# Check for updates and send a message to the console\n"
 					+ "UpdateCheck: "+updateCheck+"\n"
 					+ "\n"
 					+ "# [Do not touch] Configuration version\n"
-					+ "ConfigVersion: 1.1.0#CREATION");
+					+ "ConfigVersion: 1.1.1#CREATION");
 			writer.close();
 			
 		} catch (IOException e) {
