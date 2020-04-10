@@ -32,12 +32,19 @@ public class ConfirmMenuAPI {
 			if(!isConfirming(player)) {
 				list.put(player.getUniqueId(), action);
 				if(type == ConfirmationType.MENU) {
+					String msg = MainClass.getInstance().getConfig().getString("Text.ConfirmMessage").replaceAll("&", "§");
+					if(!msg.equalsIgnoreCase("")) {
+						player.sendMessage("§b[§eConfirmMenu§b] §r"+msg);
+					}
 					ConfirmMenu.openMenu(player);
 				}else {
 					if(MainClass.getInstance().getConfig().getBoolean("OpenSound")) {
 						player.playSound(player.getLocation(), VersionsManager.use().getSound("CHICKEN_EGG_POP"), 10, 1);
 					}
-					player.sendMessage("§b[§eConfirmMenu§b] §r"+MainClass.getInstance().getConfig().getString("Text.WriteConfirmMessage").replaceAll("&", "§"));
+					String message = MainClass.getInstance().getConfig().getString("Text.WriteConfirmMessage").replaceAll("&", "§");
+					if(!message.equalsIgnoreCase("")) {
+						player.sendMessage("§b[§eConfirmMenu§b] §r"+message);
+					}
 				}
 			}
 		}
@@ -54,7 +61,10 @@ public class ConfirmMenuAPI {
 			CancelEvent event = new CancelEvent(player, getConfirmAction(player));
 			list.remove(player.getUniqueId());
 			Bukkit.getPluginManager().callEvent(event);
-			player.sendMessage("§b[§eConfirmMenu§b] §r"+MainClass.getInstance().getConfig().getString("Text.CancelMessage").replaceAll("&", "§"));
+			String message = MainClass.getInstance().getConfig().getString("Text.CancelMessage").replaceAll("&", "§");
+			if(!message.equalsIgnoreCase("")) {
+				player.sendMessage("§b[§eConfirmMenu§b] §r"+message);
+			}
 			if(player.getOpenInventory() != null) {
 				player.closeInventory();
 			}

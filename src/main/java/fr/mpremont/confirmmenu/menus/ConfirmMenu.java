@@ -13,10 +13,6 @@ public class ConfirmMenu {
 	
 	public static void openMenu(Player p) {
 		
-		if(MainClass.getInstance().getConfig().getString("Text.ConfirmMessage") != null || MainClass.getInstance().getConfig().getString("Text.ConfirmMessage") != "") {
-			p.sendMessage("§b[§eConfirmMenu§b] §r"+MainClass.getInstance().getConfig().getString("Text.ConfirmMessage").replaceAll("&", "§"));
-		}
-		
 		String title = "§8§lCONFIRM";
 		if(MainClass.getInstance().getConfig().getString("Text.MenuTitle") != null || MainClass.getInstance().getConfig().getString("Text.MenuTitle") != "") {
 			title = MainClass.getInstance().getConfig().getString("Text.MenuTitle").replaceAll("&", "§");
