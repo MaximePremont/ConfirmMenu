@@ -7,7 +7,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import fr.mpremont.confirmmenu.events.custom.CancelEvent;
-import fr.mpremont.confirmmenu.events.custom.ConfirmEvent;
 import fr.mpremont.confirmmenu.events.custom.ConfirmationType;
 import fr.mpremont.confirmmenu.managers.VersionsManager;
 import fr.mpremont.confirmmenu.menus.ConfirmMenu;
@@ -26,8 +25,7 @@ public class ConfirmMenuAPI {
 			}
 		}
 		if(player.hasPermission("confirmmenu.skip")) {
-			ConfirmEvent event = new ConfirmEvent(player, getConfirmAction(player));
-			Bukkit.getPluginManager().callEvent(event);
+			player.performCommand(action.split(">")[1]);
 		}else {
 			if(!isConfirming(player)) {
 				list.put(player.getUniqueId(), action);
