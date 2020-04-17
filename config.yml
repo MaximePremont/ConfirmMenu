@@ -20,10 +20,10 @@ Text:
     NewVersion: "&eA new version of the plugin is available !"
     UpdateFail: "&cCould not check for updates !"
 # Changing the language will automatically change the configuration on the next reboot
-# Available languages : EN | FR | ES | DE | TK | ZH | OTHER
+# Available languages : EN | FR | ES | DE | TK | ZH | RU | PL | OTHER
 Language : "EN"
 # Check for updates and send a message to the console
 UpdateCheck: true
 
 # [Do not touch ] Configuration version
-ConfigVersion: 1.1.0#en
+ConfigVersion: 1.1.4#en
